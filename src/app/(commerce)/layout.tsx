@@ -1,3 +1,4 @@
+import TopMenu from "@/components/ui/top-menu/page";
 
 export default function CommerceLayout({
  children
@@ -5,8 +6,11 @@ export default function CommerceLayout({
  children: React.ReactNode;
 }) {
   return (
-    <main className="min-h-screen bg-red-500"> 
+    <main className="min-h-screen"> 
+    <TopMenu/>
+    <div className="px-0 sm:px-10">
       {children}
+    </div>
     </main>
   );
 }
