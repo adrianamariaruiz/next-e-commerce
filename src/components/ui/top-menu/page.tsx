@@ -17,9 +17,9 @@ const TopMenu = () => {
         </Link>
       </div>
       <div className='hidden sm:flex'>
-        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/men">Hombres</Link>
-        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/women">Mujeres</Link>
-        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/kids">Niños</Link>
+        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/men">Men</Link>
+        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/women">Women</Link>
+        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/kid">Kids</Link>
       </div>
 
       <div className='flex items-center gap-2'>
@@ -35,7 +35,7 @@ const TopMenu = () => {
         <button 
           className='m-2 p-2 rounded-md transition-all hover:bg-gray-200'
           onClick={() => openMenu()}
-        >Menú</button>
+        >Menu</button>
       </div>
 
     </nav>
