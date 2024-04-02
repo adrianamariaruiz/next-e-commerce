@@ -16,7 +16,7 @@ const QuantitySelector = ({quantity}:Props) => {
   }
 
   return (
-    <div className="flex">
+    <div className="flex my-5">
       <button onClick={()=>quantityChange(-1)}>
         <IoRemoveCircleOutline size={30} className="text-gray-500"/>
       </button>

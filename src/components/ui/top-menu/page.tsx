@@ -10,16 +10,16 @@ const TopMenu = () => {
   const openMenu = useUiStore(state => state.openSideMenu)
 
   return (
-    <nav className='flex px-5 justify-between items-center w-full border border-gray-400'>
+    <nav className='flex px-5 justify-between items-center w-full shadow-md'>
       <div>
         <Link href="/">
           <span className={`${titleFont.className} antialiased font-bold`}>E-Commerce</span>
         </Link>
       </div>
       <div className='hidden sm:flex'>
-        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/men">Men</Link>
-        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/women">Women</Link>
-        <Link className='m-2 p-2 transition-all hover:bg-gray-200' href="/category/kid">Kids</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/category/men">Men</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/category/women">Women</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/category/kid">Kids</Link>
       </div>
 
       <div className='flex items-center gap-2'>

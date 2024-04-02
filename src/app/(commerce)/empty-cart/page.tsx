@@ -1,8 +1,16 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { IoCartOutline } from "react-icons/io5";
 
 export default function EmpyCartPage() {
+
+  // redirect('/empty-cart')
+
   return (
-    <div>
-      <h1>Empy Cart Page</h1>
+    <div className="flex flex-col justify-center items-center pt-44">
+      <h1 className="font-bold text-2xl py-5">Your cart is empty</h1>
+      <IoCartOutline size={80} className="mx-5"/>
+      <Link href={'/'} className="hover:underline pt-5 text-xl text-blue-500">Back to commerce</Link>
     </div>
   );
 }

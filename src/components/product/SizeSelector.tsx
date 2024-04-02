@@ -12,8 +12,8 @@ interface Props {
 const SizeSelector = ({sizeSelected, availableSize}:Props) => {
 
   return (
-    <div className="my-5">
-      <h3 className="font-bold mb-4">Size</h3>
+    <div className="mb-5">
+      <h3 className="font-bold mt-4">Size</h3>
       <div className="flex gap-2">
         {
           availableSize.map((size) => (
