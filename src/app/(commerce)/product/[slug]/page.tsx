@@ -1,3 +1,5 @@
+import ProductMobileSlideShow from "@/components/product/ProductMobileSlideShow";
+import ProductSlideShow from "@/components/product/ProductSlideShow";
 import QuantitySelector from "@/components/product/QuantitySelector";
 import SizeSelector from "@/components/product/SizeSelector";
 import { titleFont } from "@/config/fonts";
@@ -22,13 +24,25 @@ export default function ProductSlugPage({params}:Props) {
   }
 
   return (
-    <div className="mt-5 mb-20 grid md:grid-cols-3 gap-3">
+    <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
+      
       {/* slideshow */}
       <div className="col-span-1 md:col-span-2 border border-solid border-red-500">
-        hola
+        {/* for mobile */}
+        <ProductMobileSlideShow
+          title={product.title}
+          images={product.images}
+          className="block md:hidden"
+        />
+
+        <ProductSlideShow
+          title={product.title}
+          images={product.images}
+          className="hidden md:block"
+        />
       </div>
 
-      <div className="col-span-1 border border-solid border-green-500">
+      <div className="col-span-1 border px-5 border-solid border-green-500">
         <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
           {product.title}
         </h1>
