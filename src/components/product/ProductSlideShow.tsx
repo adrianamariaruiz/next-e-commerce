@@ -28,9 +28,9 @@ const ProductSlideShow = ({images, title, className}:Props) => {
       <Swiper
         spaceBetween={10}
         navigation={true}
-        autoplay={{
-          delay: 2500
-        }}
+        // autoplay={{
+        //   delay: 2500
+        // }}
         thumbs={{ 
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null
         }}

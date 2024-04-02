@@ -27,7 +27,8 @@ export default function ProductSlugPage({params}:Props) {
     <div className="mt-5 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
       
       {/* slideshow */}
-      <div className="col-span-1 md:col-span-2 border border-solid border-red-500">
+      <div className="col-span-1 md:col-span-2 lg:px-28">
+        
         {/* for mobile */}
         <ProductMobileSlideShow
           title={product.title}
@@ -35,6 +36,7 @@ export default function ProductSlugPage({params}:Props) {
           className="block md:hidden"
         />
 
+        {/* for desktop */}
         <ProductSlideShow
           title={product.title}
           images={product.images}
@@ -42,29 +44,25 @@ export default function ProductSlugPage({params}:Props) {
         />
       </div>
 
-      <div className="col-span-1 border px-5 border-solid border-green-500">
+      {/* Description */}
+      <div className="col-span-1 px-2">
         <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>
           {product.title}
         </h1>
-        <p className="text-lg mb-5">{product.price}</p>
+        <p className="text-lg mb-5">${product.price}</p>
         
-        {/* selector de talla */}
+        {/* size selector */}
         <SizeSelector 
           sizeSelected={product.sizes[0]}
           availableSize={product.sizes}
         />
 
-
-        {/* selector de cantidad */}
+        {/* quantity selector */}
         <QuantitySelector quantity={2}/>
-
         <button className='btn-primary my-5'>Add to cart</button>
-
         <h3 className="font-bold text-sm">Description</h3>
         <p className="font-light">{product.description}</p>
       </div>
-      
-
     </div>
   );
 }
