@@ -55,28 +55,28 @@ const Sidebar = () => {
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoPersonOutline size={30}/>
-          <span className="ml-3 text-xl">Perfil</span>
+          <span className="ml-3 text-xl">Profile</span>
         </Link>
         <Link 
           href="/"
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoReaderOutline size={30}/>
-          <span className="ml-3 text-xl">Ordenes</span>
+          <span className="ml-3 text-xl">Orders</span>
         </Link>
         <Link 
           href="/"
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoLogInOutline size={30}/>
-          <span className="ml-3 text-xl">Ingresar</span>
+          <span className="ml-3 text-xl">Log in</span>
         </Link>
         <Link 
           href="/"
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoLogOutOutline size={30}/>
-          <span className="ml-3 text-xl">Salir</span>
+          <span className="ml-3 text-xl">Log out</span>
         </Link>
         <hr className="mt-5"/>
         
@@ -85,21 +85,21 @@ const Sidebar = () => {
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoShirtOutline size={30}/>
-          <span className="ml-3 text-xl">Productos</span>
+          <span className="ml-3 text-xl">Products</span>
         </Link>
         <Link 
           href="/"
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoReaderOutline size={30}/>
-          <span className="ml-3 text-xl">Ordenes</span>
+          <span className="ml-3 text-xl">Orders</span>
         </Link>
         <Link 
           href="/"
           className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
         >
           <IoPeopleOutline size={30}/>
-          <span className="ml-3 text-xl">Clientes</span>
+          <span className="ml-3 text-xl">Clients</span>
         </Link>
       </nav>
 

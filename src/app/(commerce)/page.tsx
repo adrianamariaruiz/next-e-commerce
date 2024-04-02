@@ -8,8 +8,8 @@ export default function CommercePage() {
   return (
     <div>
       <Title 
-        title="Comercio"
-        subtitle="Todos los productos"
+        title="Commerce"
+        subtitle="All products"
         className="mb-2"
       />
       <ProductGrid
