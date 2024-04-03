@@ -1,3 +1,4 @@
+import Footer from "@/components/ui/footer/page";
 import Sidebar from "@/components/ui/sidebar/Sidebar";
 import TopMenu from "@/components/ui/top-menu/page";
 
@@ -13,6 +14,7 @@ export default function CommerceLayout({
     <div className="px-0 sm:px-10">
       {children}
     </div>
+    <Footer/>
     </main>
   );
 }
