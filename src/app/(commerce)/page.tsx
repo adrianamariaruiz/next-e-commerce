@@ -1,14 +1,32 @@
 import ProductGrid from "@/components/products/grid/ProductGrid";
 import Title from "@/components/ui/title/Title";
-import { initialData } from "@/seed/seed";
+// import { initialData } from "@/seed/seed";
+import getPaginationProductsImages from "../actions/product/product-pagination";
+import { redirect } from "next/navigation";
 
-const products = initialData.products;
+// const products = initialData.products;
 
-export default function CommercePage() {
+interface Props {
+  searchParams: {
+    page?: string
+  }
+}
+
+export default async function CommercePage({searchParams}: Props) {
+
+  console.log({searchParams})
+  const page = searchParams.page ? parseInt( searchParams.page ) : 1;
+
+  const { products } = await getPaginationProductsImages({page});
+
+  if( products.length === 0 ){
+    redirect('/')
+  } 
+
   return (
     <div>
       <Title 
-        title="Commerce"
+        title="E-Commerce"
         subtitle="All products"
         className="mb-2"
       />
