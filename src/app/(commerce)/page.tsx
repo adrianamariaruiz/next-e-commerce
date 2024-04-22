@@ -3,6 +3,7 @@ import Title from "@/components/ui/title/Title";
 // import { initialData } from "@/seed/seed";
 import getPaginationProductsImages from "../actions/product/product-pagination";
 import { redirect } from "next/navigation";
+import Pagination from "@/components/ui/pagination/Pagination";
 
 // const products = initialData.products;
 
@@ -14,10 +15,9 @@ interface Props {
 
 export default async function CommercePage({searchParams}: Props) {
 
-  console.log({searchParams})
   const page = searchParams.page ? parseInt( searchParams.page ) : 1;
 
-  const { products } = await getPaginationProductsImages({page});
+  const { products, currentPage, totalPages } = await getPaginationProductsImages({page});
 
   if( products.length === 0 ){
     redirect('/')
@@ -33,6 +33,7 @@ export default async function CommercePage({searchParams}: Props) {
       <ProductGrid
         products={products}
       />
+      <Pagination totalPages={totalPages}/>
     </div>
   );
 }

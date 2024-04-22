@@ -7,7 +7,6 @@ interface PaginationOptions {
   take?: number;
 }
 
-
 const getPaginationProductsImages = async({
   page = 1,
   take = 12 
@@ -32,9 +31,14 @@ const getPaginationProductsImages = async({
       }
     })
 
-    // console.log(products)
+    
+    const totalProducts = await prisma.product.count({})
+    const totalPages = Math.ceil(totalProducts / take);
+    
 
     return {
+      currentPage: page,
+      totalPages: totalPages,
       products: products.map( product => ({
         ...product,
         images: product.ProductImage.map(image => image.url)
