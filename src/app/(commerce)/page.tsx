@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import ProductGrid from "@/components/products/grid/ProductGrid";
 import Title from "@/components/ui/title/Title";
 // import { initialData } from "@/seed/seed";
