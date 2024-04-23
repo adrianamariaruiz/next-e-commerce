@@ -17,9 +17,9 @@ const TopMenu = () => {
         </Link>
       </div>
       <div className='hidden sm:flex'>
-        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/category/men">Men</Link>
-        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/category/women">Women</Link>
-        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/category/kid">Kids</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/gender/men">Men</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/gender/women">Women</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/gender/kid">Kids</Link>
       </div>
 
       <div className='flex items-center gap-2'>
