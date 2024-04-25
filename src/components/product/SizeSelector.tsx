@@ -5,11 +5,12 @@ import clsx from "clsx";
 const products = initialData.products;
 
 interface Props {
-  sizeSelected: ValidSizes
+  sizeSelected?: ValidSizes
   availableSize: ValidSizes[]
+  onSizeSelected: (size: ValidSizes) => void
 }
 
-const SizeSelector = ({sizeSelected, availableSize}:Props) => {
+const SizeSelector = ({sizeSelected, availableSize, onSizeSelected}:Props) => {
 
   return (
     <div className="mb-5">
@@ -19,6 +20,7 @@ const SizeSelector = ({sizeSelected, availableSize}:Props) => {
           availableSize.map((size) => (
               <button 
                 key={size} 
+                onClick={() => onSizeSelected(size)}
                 className={
                   clsx(
                     "text-lg hover:underline",
