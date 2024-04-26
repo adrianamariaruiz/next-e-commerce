@@ -9,6 +9,7 @@ import StockLabel from "@/components/product/StockLabel";
 import { titleFont } from "@/config/fonts";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
+import SizeAndQuantity from "./components/SizeAndQuantity";
 
 // import { initialData } from "@/seed/seed";
 // const products = initialData.products;
@@ -38,7 +39,7 @@ export async function generateMetadata(
     openGraph: {
       title: product?.title ?? 'Producto no encontrado',
       description: product?.description ?? '',
-      images: [`/products/${product?.images[1]}`],
+      // images: [`/products/${product?.images[1]}`],
     },
   }
 }
@@ -84,15 +85,7 @@ export default async function ProductSlugPage({params}:Props) {
         </h1>
         <p className="text-lg mb-5">${product.price}</p>
         
-        {/* size selector */}
-        <SizeSelector 
-          sizeSelected={product.sizes[0]}
-          availableSize={product.sizes}
-        />
-
-        {/* quantity selector */}
-        <QuantitySelector quantity={2}/>
-        <button className='btn-primary my-5'>Add to cart</button>
+        <SizeAndQuantity product={product}/>
         <h3 className="font-bold text-sm">Description</h3>
         <p className="font-light">{product.description}</p>
       </div>
