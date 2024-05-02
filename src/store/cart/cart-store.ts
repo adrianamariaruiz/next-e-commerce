@@ -6,7 +6,16 @@ interface State {
   cart: CartProduct[];
 
   getTotalItems: () => number;
+  getCartSummary: () => {
+    subTotal: number;
+    tax: number;
+    total: number;
+    totalItemsCart: number;
+  };
+
   addProductTocart: (product: CartProduct) => void;
+  updateProductQuantity: (product: CartProduct, quantity: number) => void
+  removeProduct: (product: CartProduct) => void;
 }
 
 export const useCartStore = create<State>()(
@@ -17,10 +26,22 @@ export const useCartStore = create<State>()(
       cart: [],
 
       // Methods
-      
       getTotalItems: () => {
         const {cart}= get();
         return cart.reduce( (total, item) => total + item.quantity, 0 )
+      },
+
+      // calcular todo lo que tengo en el summary del cart
+      getCartSummary: () => {
+        const {cart}= get();
+        const subTotal = cart.reduce( (subTotal, item) => (item.quantity + item.price) + subTotal, 0 )
+        const tax = subTotal * 0.15
+        const total = subTotal + tax
+        const totalItemsCart = cart.reduce( (total, item) => total + item.quantity, 0 )
+
+        return {
+          subTotal, tax, total, totalItemsCart
+        }
       },
 
       addProductTocart: (product: CartProduct) => {
@@ -47,6 +68,32 @@ export const useCartStore = create<State>()(
 
         set({ cart: updatedCartProducts });
       },
+
+      // actualiza la cantidad de productos del carrito
+      updateProductQuantity: (product: CartProduct, quantity: number) => {
+        const { cart } = get();
+
+        const updateQuantity = cart.map( (item) => {
+          if (item.id === product.id && item.size === product.size) {
+            return { ...item, quantity: quantity };
+          }
+          return item;
+        } )
+
+        set({cart: updateQuantity})
+      },
+
+      // eliminar producto del carrito
+      removeProduct: (product: CartProduct) => {
+        const { cart } = get();
+
+        const deleteProduct = cart.filter( 
+          item => item.id !== product.id || item.size !== product.size
+        )
+
+        set({cart: deleteProduct})
+        
+      }
      
     }),
     
