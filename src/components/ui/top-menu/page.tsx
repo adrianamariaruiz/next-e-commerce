@@ -35,12 +35,12 @@ const TopMenu = () => {
         <Link href="/search">
           <IoSearch className='w-5 h-5'/>
         </Link>
-        <Link href="/cart">
+        <Link href={(totalCartItems === 0 && ready) ? "/empty-cart" : "/cart"}>
           <div className='relative'>
             {
               (ready && totalCartItems > 0) && (
                 <span 
-                  className='absolute -top-2 -right-2 px-1 text-xs rounded-full bg-blue-700 font-bold text-white'
+                  className='fade-in absolute -top-2 -right-2 px-1 text-xs rounded-full bg-blue-700 font-bold text-white'
                 >
                   {totalCartItems}
                 </span>

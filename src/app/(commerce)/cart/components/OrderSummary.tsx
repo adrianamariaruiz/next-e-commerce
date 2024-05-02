@@ -1,5 +1,6 @@
 'use client'
 
+import currentFormat from "@/app/utils/currentFormat"
 import { useCartStore } from "@/store/cart/cart-store"
 import { useEffect, useState } from "react"
 
@@ -21,11 +22,11 @@ const OrderSummary = () => {
       <span>No. Products</span>
       <span className="text-right">{totalItemsCart} articles</span>
       <span>subtotal</span>
-      <span className="text-right">$ {subTotal}</span>
+      <span className="text-right">$ {currentFormat(subTotal)}</span>
       <span>Taxes (15%)</span>
-      <span className="text-right">$ {tax}</span>
+      <span className="text-right">$ {currentFormat(tax)}</span>
       <span className="mt-5 text-2xl">Total:</span>
-      <span className="mt-5 text-2xl text-right">$ {total}</span>
+      <span className="mt-5 text-2xl text-right">$ {currentFormat(total)}</span>
     </div>
   )
 }
