@@ -10,7 +10,9 @@ export async function authenticate(
   try {
     console.log('login formdata: ', formData)
     await signIn('credentials', formData);
-    
+
+    return 'seccess'
+
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {

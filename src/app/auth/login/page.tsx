@@ -7,7 +7,7 @@ export default function LoginPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h2 className={ `${ titleFont.className } text-3xl mt-10 text-center font-bold` }>Sign in</h2>
       </div>
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
         <LoginForm/>
       </div>
     </div>

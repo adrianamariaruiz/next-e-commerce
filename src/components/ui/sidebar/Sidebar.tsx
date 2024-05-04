@@ -1,6 +1,9 @@
 'use client'
+
+import { logOut } from "@/app/actions/logout"
 import { useUiStore } from "@/store/ui-store"
 import clsx from "clsx"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonOutline, IoReaderOutline, IoSearchOutline, IoShirtOutline } from "react-icons/io5"
 
@@ -9,6 +12,9 @@ const Sidebar = () => {
 
   const isSideMenuOpen = useUiStore(state => state.isSideMenuOpen)
   const closeMenu = useUiStore(state => state.closeSideMenu)
+  const {data: session} = useSession()
+  const isAuthenticated = !!session?.user
+
 
   return (
     <div>
@@ -65,20 +71,31 @@ const Sidebar = () => {
           <IoReaderOutline size={30}/>
           <span className="ml-3 text-xl">Orders</span>
         </Link>
-        <Link 
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
-        >
-          <IoLogInOutline size={30}/>
-          <span className="ml-3 text-xl">Log in</span>
-        </Link>
-        <Link 
-          href="/"
-          className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
-        >
-          <IoLogOutOutline size={30}/>
-          <span className="ml-3 text-xl">Log out</span>
-        </Link>
+        
+        {
+          !isAuthenticated && (
+            <Link 
+              href="/auth/login"
+              className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
+            >
+              <IoLogInOutline size={30}/>
+              <span className="ml-3 text-xl">Log in</span>
+            </Link>
+          )
+        }
+
+        {/* LogOut */}
+        {
+          isAuthenticated && (
+            <button
+              className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
+              onClick={()=>logOut()}
+            >
+              <IoLogOutOutline size={30}/>
+              <span className="ml-3 text-xl">Log out</span>
+            </button>
+          )
+        }
         <hr className="mt-5"/>
         
         <Link 
