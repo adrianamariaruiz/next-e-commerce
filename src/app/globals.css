@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --primary: #274494;
+  --primary: #f18a00;
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -51,9 +51,13 @@ body {
 
 
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
+  @apply flex w-full justify-center bg-tangerine-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-tangerine-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF8903] rounded transition-all;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+  @apply bg-green-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+}
+
+.btn-disabled {
+  @apply bg-gray-600  flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm;
 }

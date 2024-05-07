@@ -14,7 +14,7 @@ const SizeSelector = ({sizeSelected, availableSize, onSizeSelected}:Props) => {
 
   return (
     <div className="mb-5">
-      <h3 className="font-bold mt-4">Size</h3>
+      <h3 className="font-bold my-2">Size</h3>
       <div className="flex gap-2">
         {
           availableSize.map((size) => (
@@ -23,9 +23,9 @@ const SizeSelector = ({sizeSelected, availableSize, onSizeSelected}:Props) => {
                 onClick={() => onSizeSelected(size)}
                 className={
                   clsx(
-                    "text-lg hover:underline",
+                    "text-lg h-11 w-11 border border-gray-500 rounded-full",
                     {
-                      'underline': size === sizeSelected
+                      'bg-tangerine-600 text-white border-none': size === sizeSelected
                     }
                   )
                 }

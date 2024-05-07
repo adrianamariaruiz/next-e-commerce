@@ -22,11 +22,11 @@ const OrderSummary = () => {
       <span>No. Products</span>
       <span className="text-right">{totalItemsCart} articles</span>
       <span>subtotal</span>
-      <span className="text-right">$ {currentFormat(subTotal)}</span>
+      <span className="text-right">{currentFormat(subTotal)}</span>
       <span>Taxes (15%)</span>
-      <span className="text-right">$ {currentFormat(tax)}</span>
+      <span className="text-right">{currentFormat(tax)}</span>
       <span className="mt-5 text-2xl">Total:</span>
-      <span className="mt-5 text-2xl text-right">$ {currentFormat(total)}</span>
+      <span className="mt-5 text-2xl text-right">{currentFormat(total)}</span>
     </div>
   )
 }

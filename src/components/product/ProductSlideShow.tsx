@@ -26,6 +26,11 @@ const ProductSlideShow = ({images, title, className}:Props) => {
   return (
     <div className={className}>
       <Swiper
+        style={{
+          '--swiper-navigation-color': '#f18a00',
+          '--swiper-pagination-color': '#f18a00',
+          } as React.CSSProperties
+        }
         spaceBetween={10}
         navigation={true}
         // autoplay={{
@@ -52,7 +57,6 @@ const ProductSlideShow = ({images, title, className}:Props) => {
           }
       </Swiper>
 
-
       <Swiper
         onSwiper={ setThumbsSwiper }
         spaceBetween={ 10 }
@@ -73,7 +77,6 @@ const ProductSlideShow = ({images, title, className}:Props) => {
                 className="rounded-lg object-fill"
               />
             </SwiperSlide>
-
           ) )
         }
       </Swiper>

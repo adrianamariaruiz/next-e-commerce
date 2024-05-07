@@ -26,7 +26,7 @@ export default async function CommercePage({searchParams}: Props) {
   } 
 
   return (
-    <div>
+    <div className="mx-3">
       <Title 
         title="E-Commerce"
         subtitle="All products"

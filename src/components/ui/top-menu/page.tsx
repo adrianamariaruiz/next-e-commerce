@@ -26,9 +26,9 @@ const TopMenu = () => {
         </Link>
       </div>
       <div className='hidden sm:flex'>
-        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/gender/men">Men</Link>
-        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/gender/women">Women</Link>
-        <Link className='m-2 p-2 transition-all rounded-md hover:bg-gray-200' href="/gender/kid">Kids</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-tangerine-500 hover:text-white' href="/gender/men">Men</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-tangerine-500 hover:text-white' href="/gender/women">Women</Link>
+        <Link className='m-2 p-2 transition-all rounded-md hover:bg-tangerine-500 hover:text-white' href="/gender/kid">Kids</Link>
       </div>
 
       <div className='flex items-center gap-2'>
@@ -40,7 +40,7 @@ const TopMenu = () => {
             {
               (ready && totalCartItems > 0) && (
                 <span 
-                  className='fade-in absolute -top-2 -right-2 px-1 text-xs rounded-full bg-blue-700 font-bold text-white'
+                  className='fade-in absolute -top-2 -right-2 px-1 text-xs rounded-full bg-tangerine-600 text-white'
                 >
                   {totalCartItems}
                 </span>
@@ -50,7 +50,7 @@ const TopMenu = () => {
           </div>
         </Link>
         <button 
-          className='m-2 p-2 rounded-md transition-all hover:bg-gray-200'
+          className='m-2 p-2 rounded-md transition-all hover:bg-tangerine-500 hover:text-white'
           onClick={() => openMenu()}
         >Menu</button>
       </div>
