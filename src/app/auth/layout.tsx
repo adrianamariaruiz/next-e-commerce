@@ -9,7 +9,6 @@ export default async function CommerceLayout({
  }) {
 
   const session = await auth();
-  // console.log({session})
 
   // si el usuario ya está autenticado lo redirige a la tienda, no lo deja volver al login porque ya está logeado
   if(session?.user){

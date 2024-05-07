@@ -3,8 +3,6 @@ export const revalidate = 604800;
 import getProductBySlug from "@/app/actions/product/get-product-by-slug";
 import ProductMobileSlideShow from "@/components/product/ProductMobileSlideShow";
 import ProductSlideShow from "@/components/product/ProductSlideShow";
-import QuantitySelector from "@/components/product/QuantitySelector";
-import SizeSelector from "@/components/product/SizeSelector";
 import StockLabel from "@/components/product/StockLabel";
 import { titleFont } from "@/config/fonts";
 import { Metadata, ResolvingMetadata } from "next";
@@ -50,7 +48,6 @@ export default async function ProductSlugPage({params}:Props) {
   // const product = products.find(prt => prt.slug === slug)
 
   const product = await getProductBySlug(slug);
-  // console.log(product)
   
   if(!product){
     return notFound()

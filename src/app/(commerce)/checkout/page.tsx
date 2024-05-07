@@ -58,7 +58,7 @@ export default function CheckoutPage() {
             <p>Av. Siempre viva 123</p>
             <p>Col. Centro</p>
             <p>Colombia</p>
-            <p>Cel 123123123</p>
+            <p>Cel 3203682218</p>
             <p>123.123.123</p>
           </div>
 

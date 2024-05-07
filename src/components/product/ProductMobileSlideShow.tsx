@@ -23,7 +23,12 @@ const ProductMobileSlideShow = ({images, title, className}:Props) => {
         style={{
           width: '100%',
           height: '500px',
-        }}
+          '--swiper-navigation-color': '#f18a00',
+          '--swiper-pagination-color': '#f18a00',
+        } as React.CSSProperties
+      }
+        
+        
         pagination
         // autoplay={{
         //   delay: 2500

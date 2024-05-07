@@ -15,7 +15,7 @@ export default function AddressPage() {
             <span>Name</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
@@ -23,7 +23,7 @@ export default function AddressPage() {
             <span>Last name</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
@@ -31,7 +31,7 @@ export default function AddressPage() {
             <span>Address</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
@@ -39,7 +39,7 @@ export default function AddressPage() {
             <span>Address 2 (optional)</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
@@ -48,7 +48,7 @@ export default function AddressPage() {
             <span>Postal code</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
@@ -56,14 +56,14 @@ export default function AddressPage() {
             <span>City</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
           <div className="flex flex-col mb-2">
             <span>Country</span>
             <select 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             >
               <option value="">[ Select ]</option>
               <option value="NY">New York</option>
@@ -74,7 +74,7 @@ export default function AddressPage() {
             <span>Phone number</span>
             <input 
               type="text" 
-              className="p-2 border rounded-md bg-gray-200"
+              className="p-2 border rounded-md bg-gray-200 focus:ring-inset focus:outline-none focus:ring-2 focus:ring-tangerine-600"
             />
           </div>
 
