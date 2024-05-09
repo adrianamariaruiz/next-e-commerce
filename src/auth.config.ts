@@ -5,23 +5,23 @@ import credentials from 'next-auth/providers/credentials';
 import { z } from 'zod'  /**Validator schema */
 import { prisma } from './lib/prisma';
 
-const privateRoutes = [
-  '/admin',
-  '/checkout',
-  '/checkout/address',
-  '/profile',
-  '/orders',
-  '/orders/[id]',
-];
+// const privateRoutes = [
+//   '/admin',
+//   '/checkout',
+//   '/checkout/address',
+//   '/profile',
+//   '/orders',
+//   '/orders/[id]',
+// ];
 
-function isOnPrivateRoute(pathname: string) {
-  return privateRoutes.some((route) => {
-    const routeRegex = new RegExp(
-      '^' + route.replace(/\[.*?\]/g, '[^/]+') + '$',
-    );
-    return routeRegex.test(pathname);
-  });
-}
+// function isOnPrivateRoute(pathname: string) {
+//   return privateRoutes.some((route) => {
+//     const routeRegex = new RegExp(
+//       '^' + route.replace(/\[.*?\]/g, '[^/]+') + '$',
+//     );
+//     return routeRegex.test(pathname);
+//   });
+// }
  
 export const authConfig: NextAuthConfig = {
   pages: {
@@ -30,7 +30,6 @@ export const authConfig: NextAuthConfig = {
   },
   callbacks:{
     // authorized({ auth, request: { nextUrl } }) {
-
     //   // const pathname = nextUrl.pathname;
     //   // const isLoggedIn = !!auth?.user;
     //   // if (isOnPrivateRoute(pathname)) {
