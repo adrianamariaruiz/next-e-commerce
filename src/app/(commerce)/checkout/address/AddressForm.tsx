@@ -1,9 +1,13 @@
 'use client'
 
+import { deleteUserAddress } from "@/app/actions/address/delete-user-address"
+import { setUserAddress } from "@/app/actions/address/set-user-address"
+import { Address } from "@/interfaces/address.interface"
 import { Country } from "@/interfaces/country.interface"
 import { useAddress } from "@/store/address/address-store"
 import clsx from "clsx"
-import Link from "next/link"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
 
@@ -16,23 +20,31 @@ type FormInputs = {
   city: string
   country: string
   phone: string
-  rememberAddress: string
+  rememberAddress: boolean
 }
 
 interface Props {
   countries: Country[];
+  userAddressDataBase?: Partial<Address>;
 }
 
-const AddressForm = ({countries}: Props) => {
+const AddressForm = ({countries, userAddressDataBase = {}}: Props) => {
+
+  const router = useRouter();
 
   const {handleSubmit, register, formState:{isValid}, reset} = useForm<FormInputs>({
     defaultValues: {
-
+      ...userAddressDataBase,
+      rememberAddress: true,
     }
   });
 
+  const {data: userSession} = useSession({required: true})
+
   const setAddress = useAddress(state => state.setAddress)
   const getAddress = useAddress(state => state.address)
+
+  console.log(userSession?.user.id)
 
   useEffect(() => {
     if(getAddress.firstName){
@@ -40,9 +52,18 @@ const AddressForm = ({countries}: Props) => {
     }
   }, [])
 
-  const onSubmit = (data: FormInputs) => {
-    console.log(data)
+  const onSubmit = async(data: FormInputs) => {
+
     setAddress(data)
+    const {rememberAddress, ...restData} = data;
+    
+    if(rememberAddress){
+      await setUserAddress(restData, userSession?.user.id || '')
+    }else {
+      await deleteUserAddress(userSession?.user.id || '')
+    }
+
+    router.push('/checkout')
   }
 
   return (
@@ -168,7 +189,6 @@ const AddressForm = ({countries}: Props) => {
 
       <div className="flex flex-col mb-2 mt-5">
         <button
-          // href='/checkout'
           disabled={!isValid}
           type="submit"
           // className="btn-primary flex w-full sm:w-1/2 justify-center lg:w-1/4"
