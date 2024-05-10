@@ -5,20 +5,11 @@ import { useFormState, useFormStatus } from "react-dom"
 import Link from "next/link"
 import { IoInformationOutline } from "react-icons/io5"
 import clsx from "clsx"
-import { useSearchParams } from "next/navigation"
-import { useEffect } from "react"
-
 
 const LoginForm = () => {
 
   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/';
-
-  useEffect(() => {
-    if (errorMessage === 'success') window.location.replace(callbackUrl);
-  }, [errorMessage, callbackUrl]);
-
+ 
   return (
     <>
       <form className="space-y-6" action={dispatch}>
