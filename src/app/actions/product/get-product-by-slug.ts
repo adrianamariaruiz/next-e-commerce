@@ -23,7 +23,7 @@ const getProductBySlug = async(slug: string) => {
     }
     
   } catch (error) {
-    throw new Error('Error al obtener el producto')
+    throw new Error('Error obtaining product')
   }
   
 }
