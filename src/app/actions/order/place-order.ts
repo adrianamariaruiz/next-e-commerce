@@ -26,8 +26,6 @@ export const placeOrder = async (
     };
   }
 
-  // console.log({productId, address, userId})
-
   // get products information
   // busco en la tabla de productos, todos los productos cuyo id exista en el arreglo de ProductToOrder[]
   const allProducts = await prisma.product.findMany({
@@ -37,14 +35,12 @@ export const placeOrder = async (
       },
     },
   });
-  // console.log(allProducts)
 
   // calcular los montos
   const itemsOrder = productIds.reduce(
     (count, prod) => count + prod.quantity,
     0
   );
-  console.log({ itemsOrder });
 
   // totales de tax, subtotal, total
   const { subtotal, tax, total } = productIds.reduce(
@@ -66,8 +62,6 @@ export const placeOrder = async (
     },
     { subtotal: 0, tax: 0, total: 0 }
   );
-  // console.log({tax, subtotal, total})
-
 
   // Crear la transaccion de base de datos
   try {

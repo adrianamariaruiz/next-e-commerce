@@ -1,7 +1,6 @@
 'use client'
 
 import clsx from "clsx"
-import { useState } from "react"
 import { IoCardOutline } from "react-icons/io5";
 
 interface Props {
@@ -9,8 +8,6 @@ interface Props {
 }
 
 const PaidOrder = ({paid}: Props) => {
-
-  // const [paid, setPaid] = useState(paidState)
 
   return (
     <>
