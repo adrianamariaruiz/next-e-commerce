@@ -4,6 +4,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import PaidOrder from "../components/PaidOrder";
 import currentFormat from "@/app/utils/currentFormat";
+import PaypalBtn from "@/components/paypal/PaypalBtn";
 
 interface Props {
   params: {
@@ -77,7 +78,7 @@ export default async function OrderByIdPage({ params }: Props) {
             <hr />
 
             <h2 className="text-2xl my-4">Checkout</h2>
-            <div className="grid grid-cols-2">
+            <div className="grid grid-cols-2 mb-4">
               <span>No. Products</span>
               <span className="text-right">{order?.itemsInOrder}</span>
               <span>subtotal</span>
@@ -88,9 +89,14 @@ export default async function OrderByIdPage({ params }: Props) {
               <span className="mt-5 text-2xl text-right">{currentFormat(order?.total || 0)}</span>
             </div>
 
-            <div className="mt-5 mb-2 w-full">
+            {/* <div className="mt-5 mb-2 w-full">
               <PaidOrder paid={order!.isPaid} />
-            </div>
+            </div> */}
+
+            <PaypalBtn 
+              amount={order!.total}
+              orderId={order!.id}
+            />
 
           </div>
 
