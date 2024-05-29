@@ -22,7 +22,6 @@ const SizeAndQuantity = ({product}: Props) => {
   const addToCart = () => {
     setSelectedSize(true)
     if(!size) return 
-    console.log({quantity, size, product})
 
     const cartProduct: CartProduct = {
       id: product.id,

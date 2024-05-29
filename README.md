@@ -6,6 +6,7 @@
 - Postgresql como base de datos
 - Prisma para hacer las peticiones SQL
 - Docker
+- PayPal
 
 ## Correr en dev
 1. Clonar el repositorio
@@ -14,7 +15,7 @@
 4. Levantar la base de datos ```docker compose up -d```
 5. Correr las migraciones de Prisma ```npx prisma migrate dev```
 6. Ejecutar seed ```npm run seed```
-7. Limpiar el localStorage del navegador
-8. Correr el proyecto ```npm run dev```
+7. Correr el proyecto ```npm run dev```
+8. Limpiar el localStorage del navegador
 
 ## Correr en producción

@@ -8,7 +8,6 @@ export async function authenticate(
   formData: FormData,
 ) {
   try {
-    // console.log('login formdata: ', formData)
     await signIn('credentials', formData);
 
     return 'success'

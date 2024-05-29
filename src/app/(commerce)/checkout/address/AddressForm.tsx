@@ -46,8 +46,6 @@ const AddressForm = ({countries, userAddressDataBase = {}}: Props) => {
   const setAddress = useAddress(state => state.setAddress)
   const getAddress = useAddress(state => state.address)
 
-  console.log(userSession?.user.id)
-
   useEffect(() => {
     if(getAddress.firstName){
       reset(getAddress)
