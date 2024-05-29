@@ -65,7 +65,7 @@ const Sidebar = () => {
                 <span className="ml-3 text-xl">Profile</span>
               </Link>
               <Link
-                href="/"
+                href="/orders"
                 className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoReaderOutline size={30} />

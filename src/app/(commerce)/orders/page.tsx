@@ -1,18 +1,21 @@
+import getOrderByUser from "@/app/actions/order/get-orders-by-user";
 import Title from "@/components/ui/title/Title";
 import clsx from "clsx";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { IoCardOutline } from "react-icons/io5";
 
-const orders = [
-  {id: 1, name: 'Usagi Tsukino', state: 'Pending to pay', options: 'View order'},
-  {id: 2, name: 'Mamoru Chiba', state: 'Paid', options: 'View order'},
-  {id: 3, name: 'Chibi Usa', state: 'Paid', options: 'View order'},
-]
 
-export default function OrdersPage() {
+export default async function OrdersPage() {
+
+  const {ok, orders} = await getOrderByUser()
+
+  if(!ok){
+    redirect('/auth/login')
+  }
 
   return (
-    <div>
+    <div className="mb-10">
       <Title
         title="Orders"
       />
@@ -29,30 +32,33 @@ export default function OrdersPage() {
           </thead>
           <tbody>
             {
-              orders.map((order) => 
+              orders?.map((order) => 
                 (
                   <tr key={order.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{order.id}</td>
-                    <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">{order.name}</td>
-                    <td 
-                      className={
-                        clsx(
-                          "flex items-center text-sm  text-gray-900 font-light px-6 py-4 whitespace-nowrap",
-                          {
-                            'text-red-700': order.state === 'Pending to pay',
-                            'text-green-700': order.state === 'Paid',
-                          } 
-                        )
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{order.id.split('-').at(0)}</td>
+                    <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">{order.OrderAddress?.firstName} {order.OrderAddress?.lastName}</td>
+                    <td className="flex items-center text-sm  text-gray-900 px-6 py-4 whitespace-nowrap">
+                      {
+                        order.isPaid ? (
+                          <>
+                            <IoCardOutline className="text-green-700"/>
+                            <span className='mx-2 text-green-700'>
+                              Paid
+                            </span>
+                          </>) : (
+                            <>
+                              <IoCardOutline className="text-red-700"/>
+                              <span className='mx-2 text-red-700'>
+                                Pending to pay
+                              </span>
+                            </>
+                          )
+                        
                       }
-                    >
-                      <IoCardOutline />
-                      <span className='mx-2'>
-                        {order.state}
-                      </span>
                     </td>
-                    <td className="text-sm text-gray-900 font-light px-6 ">
-                      <Link href="/orders/123" className="hover:underline">
-                        {order.options}
+                    <td className="text-sm text-gray-900 px-6 ">
+                      <Link href={`/orders/${order.id}`} className="hover:underline">
+                        view order
                       </Link>
                     </td>
                   </tr>

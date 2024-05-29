@@ -43,11 +43,6 @@ export const getOrderById = async (id: string) => {
       }
     })
 
-
-    console.log({order})
-    console.log('orderitem back', {orderItems})
-    // console.log({product})
-
     if(!order) throw `${id} does not exist`
 
     if(session.user.role === 'user'){
@@ -64,7 +59,6 @@ export const getOrderById = async (id: string) => {
 
   } catch (error) {
     console.log(error)
-    // throw new Error("Error obtaining product")
     return {
       ok: false,
       message: 'talk to the administrator'
