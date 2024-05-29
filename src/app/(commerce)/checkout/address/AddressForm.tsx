@@ -2,7 +2,7 @@
 
 import { deleteUserAddress } from "@/app/actions/address/delete-user-address"
 import { setUserAddress } from "@/app/actions/address/set-user-address"
-import { Address } from "@/interfaces/address.interface"
+import { Address, UserAddress } from "@/interfaces/address.interface"
 import { Country } from "@/interfaces/country.interface"
 import { useAddress } from "@/store/address/address-store"
 import clsx from "clsx"
@@ -25,16 +25,18 @@ type FormInputs = {
 
 interface Props {
   countries: Country[];
-  userAddressDataBase?: Partial<Address>;
+  userAddressDataBase?: Partial<UserAddress>;
 }
 
 const AddressForm = ({countries, userAddressDataBase = {}}: Props) => {
 
   const router = useRouter();
+  const {id, userId, countryId: country, ...restUserDbAddress} = userAddressDataBase;
 
   const {handleSubmit, register, formState:{isValid}, reset} = useForm<FormInputs>({
     defaultValues: {
-      ...userAddressDataBase,
+      ...restUserDbAddress,
+      country,
       rememberAddress: true,
     }
   });
@@ -54,8 +56,8 @@ const AddressForm = ({countries, userAddressDataBase = {}}: Props) => {
 
   const onSubmit = async(data: FormInputs) => {
 
-    setAddress(data)
     const {rememberAddress, ...restData} = data;
+    setAddress(restData)
     
     if(rememberAddress){
       await setUserAddress(restData, userSession?.user.id || '')

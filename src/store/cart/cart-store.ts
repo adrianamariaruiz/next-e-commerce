@@ -14,8 +14,10 @@ interface State {
   };
 
   addProductTocart: (product: CartProduct) => void;
-  updateProductQuantity: (product: CartProduct, quantity: number) => void
+  updateProductQuantity: (product: CartProduct, quantity: number) => void;
   removeProduct: (product: CartProduct) => void;
+
+  clearCart: () => void;
 }
 
 export const useCartStore = create<State>()(
@@ -31,10 +33,9 @@ export const useCartStore = create<State>()(
         return cart.reduce( (total, item) => total + item.quantity, 0 )
       },
 
-      // calcular todo lo que tengo en el summary del cart
       getCartSummary: () => {
         const {cart}= get();
-        const subTotal = cart.reduce( (subTotal, item) => (item.quantity + item.price) + subTotal, 0 )
+        const subTotal = cart.reduce( (subTotal, item) => (item.quantity * item.price) + subTotal, 0 )
         const tax = subTotal * 0.15
         const total = subTotal + tax
         const totalItemsCart = cart.reduce( (total, item) => total + item.quantity, 0 )
@@ -90,11 +91,13 @@ export const useCartStore = create<State>()(
         const deleteProduct = cart.filter( 
           item => item.id !== product.id || item.size !== product.size
         )
-
         set({cart: deleteProduct})
-        
+      },
+
+      clearCart: () => {
+        set({cart: []})
       }
-     
+
     }),
     
     // Le pongo el nombre del store (la key en el localstorage)
