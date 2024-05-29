@@ -1,13 +1,12 @@
 "use server";
 
 import { PayPalOrderStatusResponse } from "@/interfaces/paypal.interface";
+import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export const paypalCheckPayment = async (paypalTransactionId: string) => {
-  console.log({ paypalTransactionId });
 
   const authToken = await getPaypalBearerToken();
-
-  console.log({ authToken });
 
   if (!authToken) {
     return {
@@ -25,18 +24,41 @@ export const paypalCheckPayment = async (paypalTransactionId: string) => {
   }
 
   const {status, purchase_units} = resp;
-  // const {amount, reference_id} = purchase_units[0];
+  const {invoice_id: orderId} = purchase_units[0];
 
-  if(status !== 'COMPLETE'){
+  if(status !== 'COMPLETED'){
     return {
       ok: false,
       message: 'Has not yet been paid in paypal'
     }
   }
 
-  // TODO: realizar la actualizacion en nuestra base de datos
+  // actualiza en base de datos
+  try {
+    await prisma.order.update({
+      where: {
+        id: orderId
+      },
+      data: {
+        isPaid: true,
+        paidDate: new Date()
+      }
+    })
 
-  console.log({status, purchase_units})
+    revalidatePath(`/orders/${orderId}`)
+
+    return {
+      ok: true
+    }
+
+  } catch (error) {
+    return {
+      ok: false,
+      message: "the payment could not be made",
+    };
+  }
+
+  
 
 
 };
@@ -101,9 +123,4 @@ const verifyPayPalPayment = async (
     console.log(error)
     return null
   }
-
-  
-    // .then((response) => response.text())
-    // .then((result) => console.log(result))
-    // .catch((error) => console.error(error));
 };

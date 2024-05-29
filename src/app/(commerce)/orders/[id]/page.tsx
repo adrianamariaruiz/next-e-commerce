@@ -35,7 +35,7 @@ export default async function OrderByIdPage({ params }: Props) {
 
           {/* cart */}
           <div className="flex flex-col mt-5">
-            <PaidOrder paid={order!.isPaid} />
+            <PaidOrder paid={order?.isPaid ?? false} />
 
 
             {/* items */}
@@ -89,14 +89,18 @@ export default async function OrderByIdPage({ params }: Props) {
               <span className="mt-5 text-2xl text-right">{currentFormat(order?.total || 0)}</span>
             </div>
 
-            {/* <div className="mt-5 mb-2 w-full">
-              <PaidOrder paid={order!.isPaid} />
-            </div> */}
-
-            <PaypalBtn 
-              amount={order!.total}
-              orderId={order!.id}
-            />
+            {
+              order?.isPaid ? (
+              <div className="mt-5 mb-2 w-full">
+                <PaidOrder paid={order?.isPaid ?? false} />
+              </div>
+              ) : (
+                <PaypalBtn 
+                  amount={order!.total}
+                  orderId={order!.id}
+                />
+              )
+            }
 
           </div>
 

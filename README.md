@@ -6,6 +6,7 @@
 - Postgresql como base de datos
 - Prisma para hacer las peticiones SQL
 - Docker
+- PayPal
 
 ## Correr en dev
 1. Clonar el repositorio

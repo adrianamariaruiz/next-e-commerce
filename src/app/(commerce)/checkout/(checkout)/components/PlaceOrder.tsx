@@ -36,11 +36,9 @@ const PlaceOrder = () => {
         size: product.size
       }
     ) )
-    // console.log({address, productsToOrder})
 
     // server action
     const res = await placeOrder(productsToOrder, address)
-    console.log({res})
 
     if(!res.ok){
       setPlacingOrder(false)
