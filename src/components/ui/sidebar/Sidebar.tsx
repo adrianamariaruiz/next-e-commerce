@@ -66,6 +66,7 @@ const Sidebar = () => {
               </Link>
               <Link
                 href="/orders"
+                onClick={() => closeMenu()}
                 className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoReaderOutline size={30} />
@@ -74,6 +75,7 @@ const Sidebar = () => {
             </>
           )
         }
+        <hr className="mt-5" />
         {
           !isAuthenticated && (
             <Link
@@ -96,13 +98,22 @@ const Sidebar = () => {
                 <IoShirtOutline size={30} />
                 <span className="ml-3 text-xl">Products</span>
               </Link>
+              <Link
+                href="/admin/orders"
+                onClick={() => closeMenu()}
+                className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
+              >
+                <IoReaderOutline size={30} />
+                <span className="ml-3 text-xl">Orders</span>
+              </Link>
 
               <Link
-                href="/"
+                href="/admin/users"
+                onClick={() => closeMenu()}
                 className="flex items-center mt-5 p-2 hover:bg-gray-100 rounded transition-all"
               >
                 <IoPeopleOutline size={30} />
-                <span className="ml-3 text-xl">Clients</span>
+                <span className="ml-3 text-xl">Users</span>
               </Link>
 
             </>
