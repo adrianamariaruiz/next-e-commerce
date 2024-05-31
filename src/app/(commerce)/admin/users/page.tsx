@@ -10,7 +10,6 @@ import Pagination from "@/components/ui/pagination/Pagination";
 
 export default async function UsersPage() {
 
-  // const {ok, orders} = await getPaginatedOrders()
   const {ok, users = []} = await getPaginatedUsers()
 
   if(!ok){
@@ -27,7 +26,7 @@ export default async function UsersPage() {
         <UsersTable users={users}/>
       </div>
 
-      <Pagination totalPages={3} />
+      <Pagination totalPages={1} />
 
     </div>
   );
