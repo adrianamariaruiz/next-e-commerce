@@ -4,14 +4,12 @@ import Pagination from "@/components/ui/pagination/Pagination";
 import Title from "@/components/ui/title/Title";
 import Image from "next/image";
 import Link from "next/link";
-import { IoCardOutline } from "react-icons/io5";
 
 interface Props {
   searchParams: {
     page?: string
   }
 }
-
 
 export default async function ProductsPage({searchParams}: Props) {
 
@@ -56,7 +54,7 @@ export default async function ProductsPage({searchParams}: Props) {
                     </td>
 
                     <td className="text-sm text-gray-900 px-6 py-4 whitespace-nowrap">
-                      <Link href={`/product/${product.slug}`} className="hover:underline">
+                      <Link href={`/admin/product/${product.slug}`} className="hover:underline">
                         {product.title}
                       </Link>
                     </td>
