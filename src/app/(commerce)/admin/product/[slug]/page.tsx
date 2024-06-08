@@ -20,8 +20,6 @@ export default async function ProductPage({params}: Props) {
     getCategories()
   ])
 
-  // TODO: new
-
   if(!product && slug !== 'new'){
     redirect('/admin/products')
   }
