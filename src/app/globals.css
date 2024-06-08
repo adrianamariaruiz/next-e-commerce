@@ -55,9 +55,13 @@ body {
 }
 
 .btn-secondary {
-  @apply bg-green-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
 }
 
 .btn-disabled {
   @apply bg-gray-600  flex w-full justify-center rounded-md px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm;
+}
+
+.btn-danger {
+  @apply flex w-full justify-center bg-tangerine-700 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-tangerine-800 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EF8903] transition-all;
 }
