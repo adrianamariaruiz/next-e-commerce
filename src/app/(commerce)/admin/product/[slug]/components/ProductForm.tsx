@@ -5,10 +5,11 @@ import { Product } from "@/interfaces/product.interface";
 import { ProductImage } from "@prisma/client";
 import clsx from "clsx";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 interface Props {
-  product: Product & {ProductImage?: ProductImage[]} /**o puedo crear la interface y tomarla de ahi */
+  product: Partial<Product> & {ProductImage?: ProductImage[]} /**o puedo crear la interface y tomarla de ahi */
   categories: {
     name: string
     id: string
@@ -33,10 +34,12 @@ interface FormInputs {
 
 export const ProductForm = ({ product, categories }: Props) => {
 
+  const router = useRouter()
+
   const { handleSubmit, register, formState: { isValid }, getValues, setValue, watch } = useForm<FormInputs>(
     {defaultValues: {
       ...product,
-      tags: product.tags.join(', '),
+      tags: product.tags?.join(', '),
       sizes: product.sizes ?? []
 
       // TODO: images
@@ -61,8 +64,6 @@ export const ProductForm = ({ product, categories }: Props) => {
     if ( product.id ){
       formData.append("id", product.id ?? "");
     }
-
-    formData.append("id", product.id ?? "")
     formData.append("title", productToSave.title);
     formData.append("slug", productToSave.slug);
     formData.append("description", productToSave.description);
@@ -73,12 +74,14 @@ export const ProductForm = ({ product, categories }: Props) => {
     formData.append("categoryId", productToSave.categoryId);
     formData.append("gender", productToSave.gender);
 
-    const { ok  } = await createUpdateProduct(formData);
+    const { ok, product:updatedProduct  } = await createUpdateProduct(formData);
 
     if ( !ok ) {
       alert('Producto no se pudo actualizar');
       return;
     }
+
+    router.replace(`/admin/product/${updatedProduct?.slug}`)
 
   }
 
@@ -149,6 +152,12 @@ export const ProductForm = ({ product, categories }: Props) => {
 
       {/* Selector de tallas y fotos */}
       <div className="w-full">
+
+        <div className="flex flex-col mb-2">
+          <span>In stock</span>
+          <input type="number" className="p-2 border rounded-md bg-gray-200" {...register('inStock', {required: true, min: 0})}/>
+        </div>
+
         {/* As checkboxes */}
         <div className="flex flex-col">
 
@@ -192,7 +201,7 @@ export const ProductForm = ({ product, categories }: Props) => {
               product.ProductImage?.map(image => (
                 <div key={image.id}>
                   <Image
-                    alt={product.title} 
+                    alt={product?.title ?? ''} 
                     src={`/products/${image.url}`}
                     width={300}
                     height={300}

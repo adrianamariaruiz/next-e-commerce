@@ -1,5 +1,6 @@
 import getPaginationProductsImages from "@/app/actions/product/product-pagination";
 import currentFormat from "@/app/utils/currentFormat";
+import ProductImage from "@/components/product/product-image/ProductImage";
 import Pagination from "@/components/ui/pagination/Pagination";
 import Title from "@/components/ui/title/Title";
 import Image from "next/image";
@@ -49,7 +50,8 @@ export default async function ProductsPage({searchParams}: Props) {
                   <tr key={product.id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       <Link href={`/product/${product.slug}`}>
-                        <Image src={`/products/${product.ProductImage[0].url}`} alt={product.title} width={80} height={80} className="w-20 h-20 object-cover rounded"/>
+                        <ProductImage src={product.ProductImage[0]?.url} alt={product.title} width={80} height={80} className="w-20 h-20 object-cover rounded"/>
+                        {/* <Image src={`/products/${product.ProductImage[0].url}`} alt={product.title} width={80} height={80} className="w-20 h-20 object-cover rounded"/> */}
                       </Link>
                     </td>
 
