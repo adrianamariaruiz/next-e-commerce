@@ -50,7 +50,7 @@ const AddressForm = ({countries, userAddressDataBase = {}}: Props) => {
     if(getAddress.firstName){
       reset(getAddress)
     }
-  }, [])
+  }, [getAddress, reset])
 
   const onSubmit = async(data: FormInputs) => {
 

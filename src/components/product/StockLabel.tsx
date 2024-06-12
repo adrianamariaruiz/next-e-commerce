@@ -1,9 +1,7 @@
 'use client'
 
 import { getStockBySlug } from "@/app/actions/product/get-stock-by-slug";
-import getPaginationProductsImages from "@/app/actions/product/product-pagination";
 import { titleFont } from "@/config/fonts"
-import { prisma } from "@/lib/prisma";
 import { useEffect, useState } from "react";
 
 interface Props {
